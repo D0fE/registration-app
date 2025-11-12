@@ -17,15 +17,20 @@ public class User {
     private String name;
 
     @NotEmpty(message = "Фамилия не может быть пустым")
+    @Size(min = 5, max = 100, message = "Фамилия должно быть от 5 до 100 символов")
     private String fullName;
 
     @NotEmpty(message = "Email не может быть пустым")
+    @Email(message = "Неверный формат email")
     private String email;
 
     @NotNull(message = "Возраст обязателен")
+    @Min(value = 1, message = "Возраст не может быть меньше 1")
+    @Max(value = 150, message = "Возраст не может быть больше 150")
     private Integer age;
 
     @NotEmpty(message = "Телефон обязателен")
+    @Pattern(regexp = "\\+?[0-9]{10,15}", message = "Неверный формат телефона")
     private String phone;
 
     @Size(max = 500, message = "Описание не должно превышать 500 символов")
