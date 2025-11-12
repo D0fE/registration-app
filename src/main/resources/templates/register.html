@@ -7,12 +7,33 @@
 <body>
 <h2>Sign up</h2>
 <form th:action="@{/register}" th:object="${user}" method="post">
-    <label>Имя:</label>
-    <input type="text" th:field="*{name}" required><br>
-    <label>Email:</label>
-    <input type="email" th:field="*{email}" required><br>
+    <div>
+        <input type="text" th:field="*{name}" placeholder="Имя">
+        <p th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></p>
+    </div>
+    <div>
+        <input type="email" th:field="*{email}" placeholder="Email">
+        <p th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></p>
+    </div>
+    <div>
+        <input type="text" th:field="*{fullName}" placeholder="Фамилия">
+        <p th:if="${#fields.hasErrors('fullName')}" th:errors="*{fullName}"></p>
+    </div>
+    <div>
+        <input type="number" th:field="*{age}" placeholder="Возраст">
+        <p th:if="${#fields.hasErrors('age')}" th:errors="*{age}"></p>
+    </div>
+    <div>
+        <input type="text" th:field="*{phone}" placeholder="Телефон">
+        <p th:if="${#fields.hasErrors('phone')}" th:errors="*{phone}"></p>
+    </div>
+    <div>
+        <textarea th:field="*{description}" placeholder="Описание"></textarea>
+        <p th:if="${#fields.hasErrors('description')}" th:errors="*{description}"></p>
+    </div>
     <button type="submit">Зарегистрироваться</button>
 </form>
+
 
 <p th:text="${message}"></p>
 </body>
